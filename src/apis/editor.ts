@@ -3,14 +3,14 @@ import filesData from "@/lib/data/list-files.json";
 import openWorksheetsData from "@/lib/data/open-worksheets.json";
 import mockApiCall from "@/utils/mock-api-call";
 
-export function fetchBranches() {
+export async function fetchBranches() {
   return mockApiCall(branchesData);
 }
 
-export function fetchFiles() {
+export async function fetchFiles() {
   return mockApiCall(filesData);
 }
 
-export function fetchOpenWorksheets() {
+export async function fetchOpenWorksheets() {
   return mockApiCall(openWorksheetsData);
 }
