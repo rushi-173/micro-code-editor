@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Micro Code Editor
 
-## Getting Started
+A modern web-based code editor featuring a file explorer, Monaco Editor integration, and branch management capabilities.
 
-First, run the development server:
+## Prerequisites
+
+- Node.js (v22.0.0 or higher)
+- npm (v10.0.0 or higher)
+- Any other specific requirements (databases, API keys, etc.)
+
+## Setup & Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/rushi-173/micro-code-editor.git
+cd micro-code-editor
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+## Development
+
+To start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src
+├── apis/               # mock api call funtions
+├── app/                # Next.js 13+ app directory
+├── components/         # Reusable components
+├── contexts/           # Context for data sharing
+├── hooks/              # Custom Hooks
+├── lib/                # Data and constants
+├── types/              # Types
+├── utils/              # Utils
+```
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+- **File Explorer**
+  - Tree-like structure for files and folders navigation
+  - Click-to-open file functionality
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Code Editor**
+  - Monaco Editor integration for powerful code editing
+  - Support for multiple active worksheets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Branch Management**
+  - View and switch between different branches
+  - Dynamic file list updates based on selected branch
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Build & Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To build the application:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+To start the production server:
+
+```bash
+npm run start
+# or
+yarn start
+```
+
