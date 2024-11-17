@@ -27,7 +27,7 @@ export function FileExplorerItem({
   handleDeleteNode,
   onFileClick,
 }: FileExplorerItemProps) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(fileNode?.isOpened || false);
   const [showInput, setShowInput] = useState({
     visible: false,
     isDirectory: false,
@@ -113,7 +113,7 @@ export function FileExplorerItem({
               )}
               <input
                 type="text"
-                className="text-sm p-0 m-0 outline-none flex-1"
+                className="text-xs font-semibold p-0 m-0 outline-none flex-1"
                 autoFocus
                 onKeyDown={onAddItem}
                 onBlur={() => setShowInput({ ...showInput, visible: false })}

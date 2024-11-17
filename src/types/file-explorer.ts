@@ -5,4 +5,5 @@ export interface FileNode {
   children?: FileNode[];
   gitStatus: string | null;
   gitIgnored: boolean;
+  isOpened?: boolean;
 }

@@ -1,23 +1,12 @@
 "use client";
 
-import { fetchFiles } from "@/apis/editor";
 import { FileNode } from "@/types/file-explorer";
-import { buildFileTree } from "@/utils/file-explorer/build-file-tree";
-import { useEffect, useState } from "react";
 import FileExplorerItem from "./file-explorer-item";
 import useTraverseFileTree from "@/hooks/use-traverse-file-tree";
+import { useEditor } from "@/contexts/editor-context";
 
 export default function FileExplorer() {
-  const [filesdata, setFilesData] = useState<FileNode[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const response = await fetchFiles();
-      const tranformedFileTree = buildFileTree(response?.data?.files || []);
-      setFilesData(tranformedFileTree);
-    })();
-  }, []);
-
+  const { filesTree, setFilesTree, onOpenFile } = useEditor();
   const { insertNode, deleteNode } = useTraverseFileTree();
 
   const handleInsertNode = (
@@ -27,7 +16,7 @@ export default function FileExplorer() {
   ) => {
     if (!name) return;
     const updatedFilesData = insertNode(
-      filesdata,
+      filesTree,
       parentPath,
       {
         name,
@@ -38,25 +27,25 @@ export default function FileExplorer() {
       },
       isDirectory
     );
-    setFilesData(updatedFilesData);
+    setFilesTree(updatedFilesData);
   };
 
   const handleDeleteNode = (pathToDelete: string) => {
-    const updatedFilesData = deleteNode(filesdata, pathToDelete);
-    setFilesData(updatedFilesData);
+    const updatedFilesData = deleteNode(filesTree, pathToDelete);
+    setFilesTree(updatedFilesData);
   };
 
   const handleFileClick = (fileNode: FileNode) => {
-    console.log(fileNode);
+    onOpenFile(fileNode);
   };
 
   return (
-    <div className="w-full h-full relative pt-12">
-      <div className="px-4 py-1 h-8 w-full absolute top-0 left-0 flex items-center border-b border-slate-950/10">
+    <div className="w-full h-full relative">
+      <div className="px-4 py-1 h-8 w-full absolute top-0 left-0 flex items-center border-b border-slate-950/10 bg-white shadow-md">
         <p className="text-xs font-semibold">{"File Explorer"}</p>
       </div>
-      <div className="w-full h-full overflow-auto flex flex-col">
-        {filesdata?.map((fileNodeData, index) => {
+      <div className="w-full h-full overflow-auto flex flex-col py-12">
+        {filesTree?.map((fileNodeData, index) => {
           return (
             <FileExplorerItem
               fileNode={fileNodeData}

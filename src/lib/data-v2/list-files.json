@@ -1,0 +1,63 @@
+{
+  "status": "SUCCESS",
+  "message": "List of all files and directories fetched successfully",
+  "data": {
+    "files":  [
+      {
+        "relativePath": "DBT_TEST/dbt_project.yml",
+        "name": "dbt_project.yml",
+        "pathType": "file",
+        "depth": 1,
+        "index": 3,
+        "gitStatus": "modified",
+        "gitIgnored": false
+      },
+      {
+        "relativePath": "DBT_TEST/models/mart/call_center.sql",
+        "name": "call_center.sql",
+        "pathType": "file",
+        "depth": 3,
+        "index": 9,
+        "gitStatus": "modified",
+        "gitIgnored": false
+      },
+      {
+        "relativePath": "DBT_TEST/models/mart/final_model.sql",
+        "name": "final_model.sql",
+        "pathType": "file",
+        "depth": 3,
+        "index": 7,
+        "gitStatus": "modified",
+        "gitIgnored": false
+      },
+      {
+        "relativePath": "DBT_TEST",
+        "name": "DBT_TEST",
+        "pathType": "directory",
+        "depth": 0,
+        "index": 0,
+        "gitStatus": null,
+        "gitIgnored": false
+      },
+      {
+        "relativePath": "DBT_TEST/models",
+        "name": "models",
+        "pathType": "directory",
+        "depth": 1,
+        "index": 5,
+        "gitStatus": null,
+        "gitIgnored": false
+      },
+      {
+        "relativePath": "DBT_TEST/models/mart",
+        "name": "mart",
+        "pathType": "directory",
+        "depth": 2,
+        "index": 6,
+        "gitStatus": null,
+        "gitIgnored": false
+      }
+    ]
+  }
+}
+
