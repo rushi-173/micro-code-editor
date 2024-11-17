@@ -27,6 +27,9 @@ interface EditorContextType {
   isFetchingFilesData: boolean;
   onOpenFile: (files: FileNode) => void;
   onCloseFile: (files: OpenWorksheet) => void;
+  modifiedFiles: OpenWorksheet[];
+  activeModifiedFile: OpenWorksheet | null;
+  setOpenModifiedFileIndex: (index: number) => void;
 }
 
 const EditorContext = createContext<EditorContextType | undefined>(undefined);
@@ -39,6 +42,11 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
   const [filesTree, setFilesTree] = useState<FileNode[]>([]);
   const [filesList, setFilesList] = useState<FileListItem[]>([]);
   const [branchesData, setBranchesData] = useState<BranchData | null>(null);
+
+  const [modifiedFiles, setModifiedFiles] = useState<OpenWorksheet[]>([]);
+  const [openModifiedFileIndex, setOpenModifiedFileIndex] = useState<
+    null | number
+  >(null);
 
   const [isFetchingFilesData, setIsFetchingFilesData] =
     useState<boolean>(false);
@@ -53,6 +61,7 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
       const activeSheets =
         activeSheetsResponse?.activeWorksheets as OpenWorksheet[];
       setActiveWorksheetsData(activeSheets);
+      setModifiedFiles(activeSheets);
       setActiveFile(activeSheets[0] || null);
 
       const response = await fetchFiles();
@@ -111,6 +120,11 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const activeModifiedFile =
+    openModifiedFileIndex !== null
+      ? modifiedFiles[openModifiedFileIndex]
+      : null;
+
   return (
     <EditorContext.Provider
       value={{
@@ -127,6 +141,9 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
         isFetchingFilesData,
         onOpenFile,
         onCloseFile,
+        modifiedFiles,
+        activeModifiedFile,
+        setOpenModifiedFileIndex,
       }}
     >
       {children}

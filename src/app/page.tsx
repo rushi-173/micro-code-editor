@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="w-full h-dvh flex flex-col divide-y-2 divide-slate-950/10">
       <div className="w-full h-12 px-4 py-2 flex items-center">
-        <p>JS Code</p>
+        <p className="text-xl font-semibold">JS Code</p>
       </div>
 
       <div className="w-full flex-1 overflow-hidden">
@@ -28,7 +28,9 @@ export default function Home() {
       </div>
 
       <div className="w-full h-12 flex justify-center items-center">
-        <p>Footer</p>
+        <p className="text-xs font-semibold">
+          Made with <span>❤️</span> by Rushikesh
+        </p>
       </div>
     </div>
   );
