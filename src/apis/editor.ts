@@ -1,6 +1,6 @@
-import branchesData from "@/lib/data-v2/branches.json";
-import filesData from "@/lib/data-v2/list-files.json";
-import openWorksheetsData from "@/lib/data-v2/open-worksheets.json";
+import branchesData from "@/lib/data/branches.json";
+import filesData from "@/lib/data/list-files.json";
+import openWorksheetsData from "@/lib/data/open-worksheets.json";
 import mockApiCall from "@/utils/mock-api-call";
 
 export async function fetchBranches() {
