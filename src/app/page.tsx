@@ -1,10 +1,16 @@
 "use client";
 
+import CollapsibleSection from "@/components/common/collapsible-section";
 import Editor from "@/components/editor/editor";
 import FileExplorer from "@/components/file-explorer/file-explorer";
 import Git from "@/components/git/git";
+import { useState } from "react";
 
 export default function Home() {
+  const [fileExplorerCollapsed, setFileExplorerCollapsed] = useState(false);
+  const [gitCollapsed, setGitCollapsed] = useState(false);
+  const [editorCollapsed, setEditorCollapsed] = useState(false);
+
   return (
     <div className="w-full h-dvh flex flex-col divide-y-2 divide-slate-950/10">
       <div className="w-full h-12 px-4 py-2 flex items-center">
@@ -13,16 +19,32 @@ export default function Home() {
 
       <div className="w-full flex-1 overflow-hidden">
         <div className="w-full h-full flex flex-col md:flex-row items-center divide-x-0 md:divide-x-2 divide-y-2 md:divide-y-0 divide-slate-950/10">
-          <div className="w-full md:max-w-xs h-1/2 md:h-full flex flex-col divide-y-2 divide-slate-950/10">
-            <div className="w-full h-full flex overflow-hidden">
+          <div className="w-full md:max-w-xs max-md:max-h-1/2 h-full flex flex-col divide-y-2 divide-slate-950/10">
+            <CollapsibleSection
+              title="Files"
+              isCollapsed={fileExplorerCollapsed}
+              onToggle={() => setFileExplorerCollapsed(!fileExplorerCollapsed)}
+            >
               <FileExplorer />
-            </div>
-            <div className="w-full h-full flex overflow-hidden">
+            </CollapsibleSection>
+
+            <CollapsibleSection
+              title="Git"
+              isCollapsed={gitCollapsed}
+              onToggle={() => setGitCollapsed(!gitCollapsed)}
+            >
               <Git />
-            </div>
+            </CollapsibleSection>
           </div>
-          <div className="w-full h-1/2 md:h-full flex flex-col gap-1 overflow-hidden">
-            <Editor />
+
+          <div className="w-full h-full max-md:max-h-1/2 flex flex-col gap-1 overflow-hidden">
+            <CollapsibleSection
+              title="Editor"
+              isCollapsed={editorCollapsed}
+              onToggle={() => setEditorCollapsed(!editorCollapsed)}
+            >
+              <Editor />
+            </CollapsibleSection>
           </div>
         </div>
       </div>
