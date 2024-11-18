@@ -4,12 +4,14 @@ import CollapsibleSection from "@/components/common/collapsible-section";
 import Editor from "@/components/editor/editor";
 import FileExplorer from "@/components/file-explorer/file-explorer";
 import Git from "@/components/git/git";
+import { useEditor } from "@/contexts/editor-context";
 import { useState } from "react";
 
 export default function Home() {
   const [fileExplorerCollapsed, setFileExplorerCollapsed] = useState(false);
   const [gitCollapsed, setGitCollapsed] = useState(false);
   const [editorCollapsed, setEditorCollapsed] = useState(false);
+  const { isFetchingFilesData, isFetchingBranchesData } = useEditor();
 
   return (
     <div className="w-full h-dvh flex flex-col divide-y-2 divide-slate-950/10">

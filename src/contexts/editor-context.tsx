@@ -25,6 +25,7 @@ interface EditorContextType {
   onChangeBranch: (branchName: string) => void;
   filesList: FileListItem[];
   isFetchingFilesData: boolean;
+  isFetchingBranchesData: boolean;
   onOpenFile: (files: FileNode) => void;
   onCloseFile: (files: OpenWorksheet) => void;
   modifiedFiles: OpenWorksheet[];
@@ -49,6 +50,8 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
   >(null);
 
   const [isFetchingFilesData, setIsFetchingFilesData] =
+    useState<boolean>(false);
+  const [isFetchingBranchesData, setIsFetchingBranchesData] =
     useState<boolean>(false);
 
   const getFilesData = useCallback(async () => {
@@ -77,8 +80,10 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
   }, [branchesData]);
 
   const getBranchesData = async () => {
+    setIsFetchingBranchesData(true);
     const response = await fetchBranches();
     setBranchesData(response?.data as BranchData);
+    setIsFetchingBranchesData(false);
   };
 
   useEffect(() => {
@@ -139,6 +144,7 @@ export function EditorProvider({ children }: { children: React.ReactNode }) {
         onChangeBranch,
         filesList,
         isFetchingFilesData,
+        isFetchingBranchesData,
         onOpenFile,
         onCloseFile,
         modifiedFiles,
