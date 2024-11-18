@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className="w-full flex-1 overflow-hidden">
         <div className="w-full h-full flex flex-col md:flex-row items-center divide-x-0 md:divide-x-2 divide-y-2 md:divide-y-0 divide-slate-950/10">
-          <div className="w-full md:max-w-xs h-1/3 md:h-full flex flex-col divide-y-2 divide-slate-950/10">
+          <div className="w-full md:max-w-xs h-1/2 md:h-full flex flex-col divide-y-2 divide-slate-950/10">
             <div className="w-full h-full flex overflow-hidden">
               <FileExplorer />
             </div>
@@ -21,7 +21,7 @@ export default function Home() {
               <Git />
             </div>
           </div>
-          <div className="w-full h-2/3 md:h-full flex flex-col gap-1 overflow-hidden">
+          <div className="w-full h-1/2 md:h-full flex flex-col gap-1 overflow-hidden">
             <Editor />
           </div>
         </div>
