@@ -27,7 +27,15 @@ export default function Home() {
               isCollapsed={fileExplorerCollapsed}
               onToggle={() => setFileExplorerCollapsed(!fileExplorerCollapsed)}
             >
-              <FileExplorer />
+              {isFetchingFilesData ? (
+                <div className="animate-pulse p-4 space-y-2">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="h-4 bg-slate-200 rounded w-3/4" />
+                  ))}
+                </div>
+              ) : (
+                <FileExplorer />
+              )}
             </CollapsibleSection>
 
             <CollapsibleSection
@@ -35,7 +43,15 @@ export default function Home() {
               isCollapsed={gitCollapsed}
               onToggle={() => setGitCollapsed(!gitCollapsed)}
             >
-              <Git />
+              {isFetchingBranchesData ? (
+                <div className="animate-pulse p-4 space-y-2">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="h-4 bg-slate-200 rounded w-2/3" />
+                  ))}
+                </div>
+              ) : (
+                <Git />
+              )}
             </CollapsibleSection>
           </div>
 
@@ -45,7 +61,15 @@ export default function Home() {
               isCollapsed={editorCollapsed}
               onToggle={() => setEditorCollapsed(!editorCollapsed)}
             >
-              <Editor />
+              {isFetchingFilesData || isFetchingBranchesData ? (
+                <div className="animate-pulse p-4 space-y-2 h-full">
+                  {[...Array(10)].map((_, i) => (
+                    <div key={i} className="h-4 bg-slate-200 rounded w-full" />
+                  ))}
+                </div>
+              ) : (
+                <Editor />
+              )}
             </CollapsibleSection>
           </div>
         </div>
