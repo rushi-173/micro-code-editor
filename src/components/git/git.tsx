@@ -32,25 +32,27 @@ export default function Git() {
           ))}
         </select>
       </div>
-      <div className="w-full h-full overflow-auto flex flex-col gap-1 py-12 px-4">
-        {modifiedFiles?.map((item, index) => {
-          return (
-            <button
-              className={cn(
-                "w-full border border-slate-950/10 rounded-sm overflow-hidden px-2 py-1",
-                item?.relativePath === activeModifiedFile?.relativePath
-                  ? "border-slate-950"
-                  : ""
-              )}
-              key={index}
-              onClick={() => {
-                setOpenModifiedFileIndex(index);
-              }}
-            >
-              <p className="text-xs font-medium truncate">{item?.name}</p>
-            </button>
-          );
-        })}
+      <div className="w-full h-full overflow-auto py-12">
+        <div className="flex flex-col gap-1 p-4">
+          {modifiedFiles?.map((item, index) => {
+            return (
+              <button
+                className={cn(
+                  "w-full border border-slate-950/10 rounded-sm overflow-hidden px-2 py-1",
+                  item?.relativePath === activeModifiedFile?.relativePath
+                    ? "border-slate-950"
+                    : ""
+                )}
+                key={index}
+                onClick={() => {
+                  setOpenModifiedFileIndex(index);
+                }}
+              >
+                <p className="text-xs font-medium truncate">{item?.name}</p>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
