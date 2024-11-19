@@ -12,4 +12,13 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  .reflex-splitter {
+    background-color: #0f172a1a !important;
+    width: 2px !important;
+  }
+
+  .reflex-splitter:hover {
+    background-color: #0f172a33 !important;
+  }
 }
